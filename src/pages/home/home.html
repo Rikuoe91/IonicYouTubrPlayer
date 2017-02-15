@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      YouTube Player
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  My Video List
+
+  <div class="card">
+      <ion-item>
+        <img class="logo" src="assets/logo.png">
+      </ion-item>
+  </div>
+
+  <ion-list>
+    <ion-list-header>
+      Favorite Videos
+    </ion-list-header>
+
+    <ion-card *ngIf="noFavVideos()">
+      <ion-card-content>
+        Your favorite videos will appear here after you mark them in the play view.
+      </ion-card-content>
+    </ion-card>
+
+    <ion-item *ngFor="let video of fav_videos" (click)="goToDetails(video)">
+      <ion-avatar item-left>
+        <img src="{{'assets/' + video.thumbnail}}">
+      </ion-avatar>
+      <h2>{{video.name}}</h2>
+    </ion-item>
+  </ion-list>
+  
+  <ion-list>
+    <ion-list-header>
+      Others Videos
+    </ion-list-header>
+    <ion-item *ngFor="let video of videos" (click)="goToDetails(video)">
+      <ion-avatar item-left>
+        <img src="{{'assets/' + video.thumbnail}}">
+      </ion-avatar>
+      <h2>{{video.name}}</h2>
+    </ion-item>
+  </ion-list>
+  
+</ion-content>
+
